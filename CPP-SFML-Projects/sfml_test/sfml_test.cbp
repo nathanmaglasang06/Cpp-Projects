@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sfml_test" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/sfml_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++17" />
+					<Add option="-g" />
+					<Add directory="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/include" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+					<Add directory="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/sfml_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++17" />
+					<Add option="-DSFML_STATIC" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++17" />
+			<Add directory="C:/Users/nmaglasang086/Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/include" />
+		</Compiler>
+		<Linker>
+			<Add directory="C:/Users/nmaglasang086/Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/lib" />
+		</Linker>
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-audio-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-audio-d-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-graphics-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-graphics-d-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-network-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-network-d-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-system-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-system-d-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-window-3.dll" />
+		<Unit filename="../../../Downloads/SFML-3.0.1-windows-gcc-14.2.0-mingw-64-bit/SFML-3.0.1/bin/sfml-window-d-3.dll" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
