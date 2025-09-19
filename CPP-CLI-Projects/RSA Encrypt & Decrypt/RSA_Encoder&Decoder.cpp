@@ -53,7 +53,9 @@ string encode(string encryptString, int encrypt[]) {
             encodedString.push_back(' ');
         }
     }
-    cout << "\nEncoded String: " << encodedString;
+    cout << "\nEncoded String: " << encodedString << ", Note that the values in the numeric transformation can\n"
+                                                     "be larger or less that 1-26, causing misrepresentation within\n"
+                                                     "the encoded string please use the numeric output when decrypting";
     cout << endl;
     return encodedString;
 }
@@ -61,23 +63,19 @@ string encode(string encryptString, int encrypt[]) {
 string decode(string decryptString, int decrypt[]) {
 
     cout << decryptString << decrypt[0] << decrypt[1] << endl;
-    vector<int> numericTranslation;
-    string decodedString = "WIP";
+    vector<int> numericTransformation;
+    string decodedString;
 
-    for (char c : decryptString) {
-        if (c >= 'a' && c <= 'z') {
-            numericTranslation.push_back(c - 'a' + 1);
-        } else {
-            numericTranslation.push_back(0);
+    cout << "\nNumeric transformation: ";
+    for (int num : decryptString) {
+        cout << num << " ";
+        if (num >= 1) {
+            numericTransformation.push_back(modPow(num, decrypt[0], decrypt[1]));
         }
     }
-    cout << "Numeric translation: ";
-    for (int num : numericTranslation) {
-        cout << num << " ";
-    }
-
+    cout << "\nEncoded String: " << decodedString;
     cout << endl;
-return decodedString;
+    return decodedString;
 }
 
 
@@ -118,7 +116,7 @@ int main() {
             cout << "\nNow for the public key (e, n) enter the integer value for n: ";
 
             while (!(cin >> encrypt[1])) {
-                cout << "Ensure the value for e is an integer: ";
+                cout << "Ensure the value for n is an integer: ";
                 cin.clear();
                 cin.ignore(10000, '\n');
             }
@@ -126,27 +124,28 @@ int main() {
             cin >> encryptString;
             encode(encryptString, encrypt);
             break;
-
+//WIP
         case 2:
             cout << "\nDecrypt 2"
             "\nFor the private key (d, n) enter the integer value for d: ";
 
             while (!(cin >> decrypt[0])) {
-                cout << "Ensure the value for e is an integer: ";
+                cout << "Ensure the value for d is an integer: ";
                 cin >> decrypt[0];
                 cin.clear();
                 cin.ignore(10000, '\n');
             }
-            cout << "\nNow for the public key (e, n) enter the integer value for n: ";
+            cout << "\nNow for the key (d, n) enter the integer value for n: ";
 
             while (!(cin >> decrypt[1])) {
-                cout << "Ensure the value for e is an integer: ";
+                cout << "Ensure the value for n is an integer: ";
                 cin >> decrypt[1];
                 cin.clear();
                 cin.ignore(10000, '\n');
             }
-            cout  << "\n\nInput the Encrypted alpha numeric string [a-z]: ";
+            cout  << "\n\nInput the Encrypted numeric string [1-0]: ";
             cin >> decryptString;
+
             decode(decryptString, decrypt);
             break;
 
