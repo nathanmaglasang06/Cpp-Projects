@@ -10,6 +10,8 @@
 #include <vector>
 #include <cmath>
 
+//sqr mult comp 5 vid
+
 using namespace std;
 
 int modPow(int base, int exponent, int modulus) {
