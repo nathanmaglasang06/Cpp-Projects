@@ -1,7 +1,7 @@
 //Replacement for Fraction from fractions in python
 
 #include <iostream>
-#include "rational-develop\include\boost\rational.hpp"
+#include "rational-develop\include\boost\rational.hpp" //needs to be changed for class
 using std::cout, std::cin;
 
 
