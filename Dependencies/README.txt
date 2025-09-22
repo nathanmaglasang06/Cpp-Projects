@@ -1,0 +1,1 @@
+These applications are created and tested on a mix of windows and Unix devices, for this reason additional dependencies such as boost are installed in different manners for different machines
