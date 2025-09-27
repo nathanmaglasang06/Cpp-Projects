@@ -124,7 +124,11 @@ int main() {
     cout << "  x = " << x << " + " << (b / d) << "k\n";
     cout << "  y = " << y << " - " << (a / d) << "k\n";
 
-/*std::vector<std::pair<double,double>> pts;
+/*
+ *
+ *CODE BELOW IS USED FOR GRAPHING ON WINDOWS MACHINVE WITH GNUPLOT
+ *
+ *std::vector<std::pair<double,double>> pts;
 for (int t = -200; t <= 200; ++t) {
     double xi = x + (b / d) * t;
     double yi = y - (a / d) * t;

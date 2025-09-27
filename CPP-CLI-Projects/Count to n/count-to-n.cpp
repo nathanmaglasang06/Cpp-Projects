@@ -18,7 +18,7 @@ static void draw_progress(u64 done, u64 cap, int barWidth) {
     for (int i = 0; i < barWidth; ++i) bar[i] = (i < pos) ? '=' : ' ';
     if (pos >= 0 && pos < barWidth) bar[pos] = '>';
 
-    std::cout << '[' << bar << "] " << pct << " %\r";
+    std::cout << '[' << bar << "] " << pct << " %\n";
     std::cout.flush();
 }
 
