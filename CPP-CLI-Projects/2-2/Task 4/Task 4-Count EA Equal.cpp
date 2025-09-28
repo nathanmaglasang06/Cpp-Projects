@@ -57,7 +57,7 @@ void worker(int start, int end, int n, i64 &res1, i64 &res2, i64 &better_v2) {
             local1 += c1;
             local2 += c2;
 
-            if (c2 < c1) local_better++;
+            if (c2 == c1) local_better++;
 
         }
     }
@@ -97,7 +97,7 @@ int main() {
 
     cout << "Total count of steps for Euclidean: " << total1 << "\n";
     cout << "Total count of steps for Euclidean v2: " << total2 << "\n";
-    cout << "Number of (a,b) pairs where v2 is more efficient: " << totalBetter << "\n";
+    cout << "Number of (a,b) pairs where v2 is equal to v1: " << totalBetter << "\n";
 
     return 0;
 }
