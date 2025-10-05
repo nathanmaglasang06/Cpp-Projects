@@ -29,7 +29,6 @@ i64 EuclideanCount_v2(i64 a, i64 b) {
     while (b != 0) {
         i64 r = a % b;
         if (r == 0) {
-            count++;
             break;
         }
         if (r < (b / 2)) {
@@ -48,7 +47,7 @@ i64 EuclideanCount_v2(i64 a, i64 b) {
 
 
 void worker(int start, int end, int n, i64 &res1, i64 &res2, i64 &better_v2) {
-    i64 local1 = 0, local2 = 0, local_better;
+    i64 local1 = 0, local2 = 0, local_better = 0;
     for (int a = start; a < end; a++) {
         for (int b = 1; b <= n; b++) {
             i64 c1 = EuclideanCount(a, b);
