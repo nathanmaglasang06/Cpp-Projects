@@ -9,44 +9,76 @@
 #include <numeric>
 #include <fstream>
 #include <thread>
+#include <mutex>
 
 using namespace std;
 
 using i64 = long long;
+/*ofstream out("factortime.csv");
+out << "Nano Seconds,Value_of_n\n";
+for (auto [time, n] : recordtime) {
+    out << time << "ns," << n << " n\n";
 
+
+}
+out.close();
+*/
+
+
+
+mutex csv_mutex;
 i64 EuclideanCount(i64 a, i64 b) {
+    ofstream  out("v1.csv");
+    out << "iteration,a,b\n";
+
     int count = 0;
     while (b != 0) {
+        out << count << "," << a << "," << b << "\n";
+
         i64 temp = b;
         b = a % b;
         a = temp;
         count++;
     }
+    out.close();
     return count;
 }
 i64 EuclideanCount_v2(i64 a, i64 b) {
+    ofstream  out2("v2.csv");
+    out2 << "iteration,a,b,r,branch\n";
     i64 count = 0;
     while (b != 0) {
         i64 r = a % b;
+        string branch = "";
+
         if (r == 0) {
+            out2 << count << "," << a << "," << b << "," << r << ",break\n";
+
             break;
         }
         if (r < (b / 2)) {
+            branch = "r < b/2";
+
             i64 temp = b;
             b = r;
             a = temp;
         } else {
+            branch = "r >= b/2";
+
             i64 temp = b;
             b = b - r;
             a = temp;
         }
+        out2 << count << "," << a << "," << b << "," << r << "," << branch << "\n";
+
         count++;
     }
+    out2.close();
     return count;
 }
 
 
-void worker(int start, int end, int n, i64 &res1, i64 &res2, i64 &better_v2) {
+void worker(int start, int end, int n, i64 &res1, i64 &res2, i64 &better_v2, ofstream &thact) {
     i64 local1 = 0, local2 = 0, local_better = 0;
     for (int a = start; a < end; a++) {
         for (int b = 1; b <= n; b++) {
@@ -57,6 +89,11 @@ void worker(int start, int end, int n, i64 &res1, i64 &res2, i64 &better_v2) {
             local2 += c2;
 
             if (c2 == c1) local_better++;
+
+            {
+                lock_guard<mutex> lock(csv_mutex);
+                thact << this_thread::get_id() << "," << a << "," << b << "," << c1 << "," << c2 << "," << (c1 == c2 ? "equal" : "diff") << "\n";
+            }
 
         }
     }
@@ -69,9 +106,10 @@ int main() {
     int n;
     cout << "Enter a n: ";
     cin >> n;
+    ofstream  thact("threadactivity.csv");
+    thact << "thread_id,a,res1,res2,better\n"; // CSV header
 
     int num_threads = thread::hardware_concurrency(); //gets sthe number fo threads: in my case 8, one for each core because mac has weird allocation of 'efficiency' cores for system operatons
-    //If i could run on gpu i could do up to 2000 threads but i dont know how to do that yet
     cout << "Number of threads: " << num_threads << "\n";
 
     vector<thread> threads;
@@ -83,7 +121,7 @@ int main() {
         //loop creates and launces thread for each chunk of work
         int start = t * chunk + 1;
         int end = (t == num_threads - 1) ? n : (t + 1) * chunk + 1; //number of values each thread has to run
-        threads.emplace_back(worker, start, end, n, ref(partial1[t]), ref(partial2[t]), ref(partialBetter[t])); // launches th threads to actuially do the work
+        threads.emplace_back(worker, start, end, n, ref(partial1[t]), ref(partial2[t]), ref(partialBetter[t]), ref(thact)); // launches th threads to actuially do the work
     }
     for (auto &th : threads) { //waits for all the threads to end
         th.join();
