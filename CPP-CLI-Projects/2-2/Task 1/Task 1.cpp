@@ -1,5 +1,8 @@
 //
 // Created by Nathan Maglasang on 27/9/2025.
+
+//Task 1. Modify the above code to define a function EuclidianCount which outputs the number of iterations it takes for the Euclidian algorithm to terminate.
+
 //
 #include <iostream>
 using namespace std;

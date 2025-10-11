@@ -1,5 +1,8 @@
 //
 // Created by Nathan Maglasang on 27/9/2025.
+
+//Task 2. Modify the above code to define a function EuclidianCount v2 which outputs the number of iterations it takes for the above variation (euclidian algorithm v2) of the Euclidian algorithm to terminate.
+
 //
 #include <iostream>
 using namespace std;

@@ -1,5 +1,8 @@
 //
 // Created by Nathan Maglasang on 27/9/2025.
+
+//Task 4. Count the proportion of pairs (a, b) satisfying 1 ≤ a, b ≤ 103 and EuclidianCount v2(a, b) = EuclidianCount(a, b)
+
 //
 
 #include <iostream>

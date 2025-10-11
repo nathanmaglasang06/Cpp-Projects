@@ -1,0 +1,12 @@
+Consider our two implementations of the Euclidean algorithm from Task 1 and Task
+2. Both produce the correct result, but one is significantly more efficient on average.
+Can you explain the technical difference between the two algorithms that makes one
+more efficient than the other?
+
+In the two examples provided both algorithms are computing the gcd() of the pair (a,b), using the Euclidian algorithm.
+
+The main difference between the two algorithms was the method they used for dealing with larger values, where the main difference was
+the calculation of b, where the algorithm replaces b in the next step using the smaller of the two possible values (a % b) or (b - a % b).
+The benefit of this method comes from ensuring that b will decrease by at least half in each step, allowing the v2 algorithm to be
+far more efficient than the v1 algorithm on average.
+
